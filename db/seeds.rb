@@ -1,3 +1,6 @@
+Employee.create!([
+  {id: 1, manager_emp_id: 1, department_id: 1, name: "steven", hired_on: "2014-04-04"}
+])
 Publication.create!([
   {id: 1, title: "Vogue", frequency: "monthly", imprint: "Conde Nast"}
 ])
