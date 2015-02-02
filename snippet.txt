@@ -1,0 +1,9 @@
+#snippet
+#in a real app you may prefer to be more selective here...
+tables = ActiveRecord::Base.connection.tables.reject{|t| t=="schema_migrations"}
+tables.each do |table|
+   sql = "SELECT setval('#{table}_id_seq', (SELECT MAX(id) FROM #{table}))"
+   puts "Executing #{sql}"
+   ActiveRecord::Base.connection.execute(sql)
+end
+
