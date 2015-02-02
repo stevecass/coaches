@@ -11,3 +11,12 @@ Subscription.create!([
 User.create!([
   {id: 1, email: "steven@cassidy.co.uk", password_digest: "$2a$10$RECcc0l0foHz9XXBaDW/me9UoOWsYbTAedfZRGqF7grwZi.1qlk9e", name: "Steven Cassidy", dob: "1967-03-04"}
 ])
+
+#in a real app you may prefer to be more selective here...
+tables = ActiveRecord::Base.connection.tables.reject{|t| t=="schema_migrations"}
+tables.each do |table|
+   sql = "SELECT setval('#{table}_id_seq', (SELECT MAX(id) FROM #{table}))"
+   puts "Executing #{sql}"
+   ActiveRecord::Base.connection.execute(sql)
+end
+
