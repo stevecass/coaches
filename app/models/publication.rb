@@ -8,6 +8,6 @@ class Publication < ActiveRecord::Base
   end
 
   def paid_subscribers
-    User.joins(:subscriptions).merge(Subscription.paid).where('subscriptions.publication_id = ?',  1)
+    User.joins(:subscriptions).merge(Subscription.paid2).where('subscriptions.publication_id = ?',  self.id)
   end
 end

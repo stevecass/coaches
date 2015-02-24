@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20150202185723) do
   create_table "photos", force: :cascade do |t|
     t.integer "post_id"
     t.string  "caption"
+    t.string  "photo_url"
   end
 
   add_index "photos", ["post_id"], name: "index_photos_on_post_id", using: :btree

@@ -11,6 +11,7 @@ class CreatePosts < ActiveRecord::Migration
     create_table :photos do |t|
       t.integer :post_id, index: true
       t.string :caption
+      t.string :photo_url
     end
 
     create_table :comments do |t|
